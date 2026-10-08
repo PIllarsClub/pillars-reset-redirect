@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Opening The Pillars Club…</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #0F1A0F;
+      font-family: Georgia, serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 32px 24px;
+      text-align: center;
+    }
+    .logo {
+      font-size: 18px;
+      color: #C9A84C;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 40px;
+    }
+    .card {
+      background: #162016;
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: 16px;
+      padding: 40px 32px;
+      max-width: 400px;
+      width: 100%;
+    }
+    .label {
+      font-size: 12px;
+      color: #C9A84C;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    h1 {
+      font-size: 24px;
+      color: #F5EDD6;
+      font-weight: normal;
+      margin-bottom: 16px;
+    }
+    p {
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      color: #B8A882;
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+    .btn {
+      display: inline-block;
+      background: #C9A84C;
+      color: #0F1A0F;
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+      text-decoration: none;
+      padding: 14px 32px;
+      border-radius: 10px;
+    }
+    .tagline {
+      margin-top: 32px;
+      font-size: 13px;
+      color: #C9A84C;
+      letter-spacing: 1px;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <p class="logo">The Pillars Club</p>
+  <div class="card">
+    <p class="label">Password Reset</p>
+    <h1>Opening the App…</h1>
+    <p>If the app does not open automatically, tap the button below.</p>
+    <a class="btn" id="openBtn" href="#">Open The Pillars Club</a>
+    <p class="tagline">Community. Connection. Cigars.</p>
+  </div>
+  <script>
+    var params = new URLSearchParams(window.location.search);
+    var tokenHash = params.get('token_hash') || '';
+    var type = params.get('type') || 'recovery';
+
+    var appUrl = 'thepillarsclub://reset-password'
+      + '?token_hash=' + encodeURIComponent(tokenHash)
+      + '&type=' + encodeURIComponent(type);
+
+    document.getElementById('openBtn').href = appUrl;
+
+    try { window.location = appUrl; } catch(e) {}
+  </script>
+</body>
+</html>
